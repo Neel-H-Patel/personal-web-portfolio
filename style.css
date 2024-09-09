@@ -11,24 +11,31 @@ body {
   color: var(--rich-black);
 }
 
-nav {
+/* Shared link styles for nav, footer, and project titles */
+nav ul li a,
+footer small a,
+figure a {
+  color: var(--platinum);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+nav, footer {
   width: 100%;
   background-color: var(--oxford-blue);
-  padding: 1rem 0;
   text-align: center;
+}
+
+nav {
+  padding: 1rem 0;
 }
 
 footer {
-  width: 100%;
-  background-color: var(--oxford-blue);
-  text-align: center;
   margin: 0;
-  /* Ensures no extra margin */
-}
-
-nav ul li a,
-footer small a {
-  color: var(--platinum);
 }
 
 main {
@@ -44,61 +51,51 @@ h3 {
 }
 
 p {
-  color: var(--rich-black);
   font-size: 1rem;
   line-height: 1.6;
+  color: var(--rich-black);
 }
 
 figure {
   background-color: var(--oxford-blue);
-  /* Darker background for better contrast */
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
 }
 
-figure a {
+figure p, figure ul li, figure strong {
   color: var(--platinum);
-  /* Lighter color for the project title */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-figure a:hover {
-  text-decoration: underline;
-}
-
-figure p {
-  color: var(--platinum);
-  /* Light text for good contrast against dark background */
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-figure ul li {
-  color: var(--platinum);
-  /* Light text for list items */
-  margin-bottom: 0.5rem;
-}
-
-figure strong {
-  color: var(--platinum);
-  /* Bold emphasis in lighter color */
 }
 
 figure ul {
   padding-left: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
-a {
-  color: var(--rich-black);
-  text-decoration: none;
-  font-weight: bold;
+.video-container, .side-by-side-images {
+  text-align: center;
 }
 
-a:hover {
-  text-decoration: underline;
+.video-wrapper, .image-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+video, img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 #projects .grid {
@@ -107,7 +104,7 @@ a:hover {
   gap: 2rem;
 }
 
-/* Styling for the profile picture */
+/* Styling for profile picture */
 .profile-pic {
   width: 150px;
   border-radius: 20%;
@@ -115,76 +112,18 @@ a:hover {
   float: left;
 }
 
-/* Specific article styling in the Contact section */
+/* Contact section specific styles */
 #contact article {
   background-color: transparent;
   color: var(--platinum);
 }
 
-.side-by-side-images {
-  text-align: center;
-  /* Center align the content */
-}
-
-.side-by-side-images a {
-  font-weight: bold;
-  font-size: 1.2rem;
-  /* Make the project name more prominent */
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.side-by-side-images .image-container {
-  display: flex;
-  justify-content: center;
-  /* Center the images */
-  gap: 1rem;
-  /* Add space between the images */
-  margin: 1rem 0;
-}
-
-.side-by-side-images img {
-  width: 45%;
-  /* Ensure the images fit side by side */
-  border-radius: 8px;
-  /* Optional rounded corners */
-}
-
-.side-by-side-images p {
-  margin-top: 1rem;
-  /* Space between the images and the description */
-}
-
 @media (max-width: 768px) {
-  .side-by-side-images .image-container {
+  .image-container, .video-wrapper {
     flex-direction: column;
-    /* Stack the images vertically on smaller screens */
   }
 
-  .side-by-side-images img {
+  video, img {
     width: 100%;
-    /* Full width images on smaller screens */
   }
-}
-
-.video-container {
-  text-align: center;
-}
-
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 aspect ratio */
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-}
-
-.video-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
